@@ -1,1 +1,1 @@
-# Startbestand Labo Sass Deel 5 - de navigatie
+# Oplossing Labo Sass Deel 5 - de navigatie
