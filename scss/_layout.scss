@@ -120,3 +120,105 @@
         color: $color-secondary;
     }
 }
+
+.navbar {
+    position: relative;
+    z-index: 200;
+    
+    &-navigation {
+        display: flex;
+
+        &-left {
+            width: 50vw;
+            height: 100vh;
+            background-color: $color-primary;
+            position: fixed;
+            left: -50vw;
+            transition: left .8s;
+            // transition: left .8s cubic-bezier(1, 0, 0, 1);
+            
+            .left-img {
+                width: 50%;
+                position: absolute;
+                box-shadow: 0 15px 60px rgba($color-black, .8);
+                opacity: .7;
+                border-radius: 10px;
+
+                &-1 {
+                    top: 2%;
+                    left: 2%
+                }
+                &-2 {
+                    bottom: 3%;
+                    right: 4%
+                }
+                &-3 {
+                    top: 30%;
+                    left: 25%
+                }
+            }
+        }
+        
+        &-right {
+            @include flexLayout();
+            width: 50vw;
+            height: 100vh;
+            background-color: $color-secondary;
+            position: fixed;
+            right: -50vw;
+            transition: right .8s;
+            // transition: right .8s cubic-bezier(1, 0, 0, 1);
+
+            .nav-list {
+                &-item {
+                    list-style: none;
+                }
+
+                &-link {
+                    @include textStyles(capitalize);
+                    display: block;
+                    margin: 20px;
+                    font-family: $font-nunito;
+                    font-size: 80px;
+                    color: $color-light;
+                    text-decoration: none;
+                    text-align: center;
+                    transition: all .5s;
+
+                    &:hover {
+                        color: $color-primary;
+                        letter-spacing: 4px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.checkbox {
+
+    display: none;
+
+    &:checked ~ .navbar-navigation .navbar-navigation-left {
+        left: 0;
+    }
+
+    &:checked ~ .navbar-navigation .navbar-navigation-right {
+        right: 0;
+    }
+
+    &:checked ~ .hamburger-menu .menu {
+        transform: rotate(90deg);
+    }
+
+    &:checked ~ .hamburger-menu .menu-line-1 {
+        transform: rotate(-40deg);
+    }
+
+    &:checked ~ .hamburger-menu .menu-line-2 {
+       opacity: 0;
+    }
+    &:checked ~ .hamburger-menu .menu-line-3 {
+        transform: rotate(40deg);
+    }
+}
